@@ -1,0 +1,32 @@
+ public class PerfectNumbers {
+    public static void main(String[] args) {
+        int n = 3; 
+        int count = 0; 
+        int num = 1;
+        System.out.print("First " + n + " perfect numbers are: ");
+        while (count < n) {
+            if (isPerfectNumber(num)) {
+                System.out.print(num);
+                count++;
+                if (count < n) {
+                    System.out.print(" , ");
+                }
+            }
+            num++;
+        }
+    }
+    public static boolean isPerfectNumber(int number) {
+        int sum = 1; // 1 is always a divisor
+
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                sum += i;
+                if (i != number / i) {
+                    sum += number / i;
+                }
+            }
+        }
+
+        return sum == number;
+    }
+}
